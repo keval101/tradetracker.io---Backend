@@ -8,7 +8,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: config.get('DATABASE_URL'),
+          url: "mysql://root:ZMnjSyUpHPWojHfcH0V9@containers-us-west-189.railway.app:7098/railway",
         },
       },
     });
