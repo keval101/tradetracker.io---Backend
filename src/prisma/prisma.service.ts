@@ -8,7 +8,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: "sqlserver://localhost:1433;database=trade-tracker;user=sa;password=Keval@123;encrypt=true;trustServerCertificate=true;",
+          url: config.get('DATABASE_URL'),
         },
       },
     });

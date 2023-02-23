@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { GainersDto } from './dto/gainers.dto';
+import { CreateGainersDto } from './dto/gainers.create.dto';
 import { UpdateGainersDto } from './dto/gainers.update.dto';
 import { GainersService } from './gainers.service';
 
@@ -7,8 +7,13 @@ import { GainersService } from './gainers.service';
 export class GainersController {
     constructor(private readonly gainerService: GainersService) {}
 
+    @Get()
+    getGainers() {
+        return this.gainerService.getGainer();
+    }
+
     @Post('create')
-    addGainers(@Body() dto: GainersDto) {
+    addGainers(@Body() dto: CreateGainersDto) {
         return this.gainerService.addGainers(dto);
     }
 

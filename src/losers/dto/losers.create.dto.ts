@@ -2,7 +2,7 @@
 
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class GainersDto {
+export class CreateLosersDto {
   @IsString()
   @IsNotEmpty()
   symbol: string;

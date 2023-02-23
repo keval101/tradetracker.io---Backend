@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { GainersDto } from './dto/gainers.dto';
+import { CreateGainersDto } from './dto/gainers.create.dto';
 import { UpdateGainersDto } from './dto/gainers.update.dto';
 
 @Injectable()
@@ -8,7 +8,12 @@ export class GainersService {
 
     constructor(private readonly prisma: PrismaService) {}
 
-    async addGainers(input: GainersDto) {
+    async getGainer() {
+        const data = await this.prisma.gainers.findMany()
+        return data;
+    }
+
+    async addGainers(input: CreateGainersDto) {
         const data = await this.prisma.gainers.create({
             data: {
                 symbol: input.symbol,
