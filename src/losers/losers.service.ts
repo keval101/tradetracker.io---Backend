@@ -1,6 +1,4 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { firstValueFrom } from 'rxjs';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateLosersDto } from './dto/losers.create.dto';
 import { UpdateLosersDto } from './dto/losers.update.dto';
@@ -8,7 +6,7 @@ import { UpdateLosersDto } from './dto/losers.update.dto';
 @Injectable()
 export class LosersService {
 
-    constructor(private readonly prisma: PrismaService, private readonly httpService: HttpService) {}
+    constructor(private readonly prisma: PrismaService) {}
 
     async getLosers() {
         const data = await this.prisma.losers.findMany()
@@ -41,10 +39,4 @@ export class LosersService {
             })
         return data;
     }
-
-    async getData() {
-        const url = 'https://www1.nseindia.com/live_market/dynaContent/live_watch/stock_watch/liveIndexWatchData.json';
-        const { data } = await firstValueFrom(this.httpService.get(url));
-        return data;
-     }
 }

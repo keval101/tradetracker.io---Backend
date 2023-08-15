@@ -8,11 +8,6 @@ export class LosersController {
 
     constructor(private losersService: LosersService) {}
 
-    @Get('nse')
-    getNSE() {
-        return this.losersService.getData();
-    }
-
     @Get()
     getGainers() {
         return this.losersService.getLosers();

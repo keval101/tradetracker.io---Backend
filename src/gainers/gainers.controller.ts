@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CreateGainersDto } from './dto/gainers.create.dto';
-import { UpdateGainersDto } from './dto/gainers.update.dto';
+import { CreateGainersDto } from './dto/create.gainers.dto';
+import { UpdateGainersDto } from './dto/update.gainers.dto';
 import { GainersService } from './gainers.service';
 
 @Controller('gainers')

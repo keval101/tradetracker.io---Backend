@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateTradeDto } from './dto/create.trades.dto';
+import { DeleteTradeDto } from './dto/delete.trades.dto';
+import { UpdateTradeDto } from './dto/update.trades.dto';
 
 @Injectable()
 export class TradesService {
@@ -14,32 +17,38 @@ export class TradesService {
         return data;
     }
 
-    createTrade(user: any, dto: any) {
+    createTrade(userId: any, dto: CreateTradeDto) {
         const data = this.prisma.trade.create({
             data: {
-                userId: user.id,
+                userId: userId,
                 ...dto
             }
         })
         return data;
     }
 
-    updateTrade(user: any, dto: any) {
-        const value = {
-            type: dto.type,
-            index: dto.index,
-            stickerPrice: dto.stickerPrice,
-            quantity: dto.quantity,
-            average: dto.average,
-            totalAmount: dto.totalAmount
-        }
+    updateTrade(userId: any, dto: UpdateTradeDto) {
         const data = this.prisma.trade.update({
             where: {
                 id: dto.id
             },
             data: {
-                userId: user.id,
-                ...value
+                userId: userId,
+                type: dto.type,
+                index: dto.index,
+                stickerPrice: dto.stickerPrice,
+                quantity: dto.quantity,
+                average: dto.average,
+                totalAmount: dto.totalAmount
+            }
+        })
+        return data;
+    }
+
+    deleteTrade(user: any, dto: DeleteTradeDto) {
+        const data = this.prisma.trade.delete({
+            where: {
+                id: dto.id
             }
         })
         return data;
