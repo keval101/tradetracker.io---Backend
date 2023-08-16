@@ -1,29 +1,43 @@
 // import { IsNotEmpty, IsOptional, IsString } from '../../../node_modules/class-validators';
 
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreateTradeDto {
-  @IsString()
-  @IsNotEmpty()
-  type: string;
 
-  @IsString()
   @IsNotEmpty()
-  index: string;
+  date: Date
 
   @IsNumber()
   @IsNotEmpty()
-  stickerPrice: number;
+  trades: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  invested: number;
 
   @IsNumber()
   @IsNotEmpty()
   quantity: number;
 
-  @IsNumber()
+  @IsBoolean()
   @IsNotEmpty()
-  average: number;
+  isProfitable: boolean;
+
+  @IsNumber()
+  profit: number;
+
+  @IsNumber()
+  loss: number;
 
   @IsNumber()
   @IsNotEmpty()
-  totalAmount: number;
+  brokerage: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  after_brokerage: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  remainingCapital: number;
 }

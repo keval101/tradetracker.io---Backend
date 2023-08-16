@@ -17,7 +17,7 @@ export class TradesService {
         return data;
     }
 
-    createTrade(userId: any, dto: CreateTradeDto) {
+    createTrade(userId: number, dto: CreateTradeDto) {
         const data = this.prisma.trade.create({
             data: {
                 userId: userId,
@@ -27,19 +27,21 @@ export class TradesService {
         return data;
     }
 
-    updateTrade(userId: any, dto: UpdateTradeDto) {
+    updateTrade(userId: number, dto: UpdateTradeDto) {
         const data = this.prisma.trade.update({
             where: {
                 id: dto.id
             },
             data: {
-                userId: userId,
-                type: dto.type,
-                index: dto.index,
-                stickerPrice: dto.stickerPrice,
-                quantity: dto.quantity,
-                average: dto.average,
-                totalAmount: dto.totalAmount
+                date: dto?.date,
+                trades: dto?.trades,
+                invested: dto?.invested,
+                isProfitable: dto?.isProfitable,
+                profit: dto?.profit,
+                loss: dto?.loss,
+                brokerage: dto?.brokerage,
+                after_brokerage: dto?.after_brokerage,
+                remainingCapital: dto?.remainingCapital
             }
         })
         return data;

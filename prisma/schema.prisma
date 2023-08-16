@@ -53,14 +53,17 @@ model Trade {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  type          String
-  index         String
-  stickerPrice  Int
-  quantity      Int
-  average       Int
-  totalAmount   Int
+  date              DateTime
+  trades            Int
+  invested          Float
+  isProfitable      Boolean
+  profit            Float
+  loss              Float
+  brokerage         Float
+  after_brokerage   Float
+  remainingCapital  Float
 
-  userId Int
+  userId            Int
   user   User @relation(fields: [userId], references: [id])
 
   @@map("trades")
