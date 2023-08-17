@@ -1,6 +1,6 @@
 // import { IsNotEmpty, IsOptional, IsString } from '../../../node_modules/class-validators';
 
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class UpdateTradeDto {
 
@@ -19,18 +19,16 @@ export class UpdateTradeDto {
   @IsNotEmpty()
   invested: number;
 
-  @IsNumber()
-  @IsNotEmpty()
-  quantity: number;
-
   @IsBoolean()
   @IsNotEmpty()
   isProfitable: boolean;
 
   @IsNumber()
+  @IsOptional()
   profit: number;
 
   @IsNumber()
+  @IsOptional()
   loss: number;
 
   @IsNumber()

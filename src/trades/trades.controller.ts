@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from 'src/decorators/user.decorator';
 import { CreateTradeDto } from './dto/create.trades.dto';
@@ -21,7 +21,7 @@ export class TradesController {
         return this.tradeService.createTrade(userId, dto);
     }
 
-    @Post('edit')
+    @Patch('update')
     updateTrade(@User() userId: any, @Body() dto: UpdateTradeDto) {
         return this.tradeService.updateTrade(userId, dto);
     }

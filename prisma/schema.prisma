@@ -57,8 +57,8 @@ model Trade {
   trades            Int
   invested          Float
   isProfitable      Boolean
-  profit            Float
-  loss              Float
+  profit            Float?
+  loss              Float?
   brokerage         Float
   after_brokerage   Float
   remainingCapital  Float
