@@ -24,6 +24,7 @@ export class AuthService {
           email: dto.email,
           firstName: dto.firstName,
           lastName: dto.lastName,
+          balance: dto.balance,
           hash,
         },
         // select: {
@@ -46,7 +47,6 @@ export class AuthService {
   }
 
   async signin(dto: AuthDto) {
-    console.log(dto)
     //find the user by email
     const user = await this.prisma.user.findUnique({
       where: {

@@ -21,6 +21,10 @@ model User {
   firstName String?
   lastName  String?
 
+  balance Int?
+  profit Int?
+  loss Int?
+
   trades  Trade[]
   
   @@map("users")

@@ -11,6 +11,7 @@ import { TradesModule } from './trades/trades.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { NseModule } from './nse/nse.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { NseModule } from './nse/nse.module';
     TradesModule,
     AuthModule,
     NseModule,
+    UserModule,
   ],
   controllers: [AppController, TradesController],
   providers: [AppService, TradesService],

@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `users` ADD COLUMN `balance` INTEGER NULL,
+    ADD COLUMN `loss` INTEGER NULL,
+    ADD COLUMN `profit` INTEGER NULL;

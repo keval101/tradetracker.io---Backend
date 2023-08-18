@@ -3,22 +3,24 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTradeDto } from './dto/create.trades.dto';
 import { DeleteTradeDto } from './dto/delete.trades.dto';
 import { UpdateTradeDto } from './dto/update.trades.dto';
+import { use } from 'passport';
 
 @Injectable()
 export class TradesService {
     constructor(private readonly prisma: PrismaService) {}
 
-    getTrades(userId: number) {
-        const data = this.prisma.trade.findMany({
+    async getTrades(userId: number) {
+        const data = await this.prisma.trade.findMany({
             where: {
                 userId: userId
-            }
+            },
+            orderBy: {date: 'desc'}
         })
         return data;
     }
 
-    createTrade(userId: number, dto: CreateTradeDto) {
-        const data = this.prisma.trade.create({
+    async createTrade(userId: number, dto: CreateTradeDto) {
+        const data = await this.prisma.trade.create({
             data: {
                 userId: userId,
                 ...dto
@@ -27,8 +29,8 @@ export class TradesService {
         return data;
     }
 
-    updateTrade(userId: number, dto: UpdateTradeDto) {
-        const data = this.prisma.trade.update({
+    async updateTrade(userId: number, dto: UpdateTradeDto) {
+        const data = await this.prisma.trade.update({
             where: {
                 id: dto.id
             },
@@ -47,10 +49,20 @@ export class TradesService {
         return data;
     }
 
-    deleteTrade(user: any, dto: DeleteTradeDto) {
-        const data = this.prisma.trade.delete({
+    async deleteTrade(userId: number, tradeId: string) {
+        const data = await this.prisma.trade.delete({
             where: {
-                id: dto.id
+                id: +tradeId
+            }
+        })
+        return {status: 'SUCCESS'};
+    }
+
+    async filterTrade(userId: any, isProfitable: boolean) {
+        const data = await this.prisma.trade.findMany({
+            where: {
+                userId: userId,
+                isProfitable: isProfitable
             }
         })
         return data;
