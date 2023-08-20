@@ -18,7 +18,7 @@ export class AuthDto {
   lastName?: string;
   
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   balance: number;
 
 }

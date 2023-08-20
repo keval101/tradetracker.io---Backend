@@ -63,7 +63,8 @@ export class TradesService {
             where: {
                 userId: userId,
                 isProfitable: isProfitable
-            }
+            },
+            orderBy: {date: 'desc'}
         })
         return data;
     }
