@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { User } from 'src/decorators/user.decorator';
+import { User } from './../decorators/user.decorator';
 import { CreateTradeDto } from './dto/create.trades.dto';
 import { DeleteTradeDto } from './dto/delete.trades.dto';
 import { UpdateTradeDto } from './dto/update.trades.dto';
